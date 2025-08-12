@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening Page</title>
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+
+    <style>
+        .glass-card{
+            background: rgba(252, 131, 212, 0.171);
+            backdrop-filter: blur(20px);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.493), inset 0px 2px 5px rgb(255, 255, 255);
+        }
+
+        .glass-icon{
+            background: rgba(255, 255, 255, 0.349);
+            backdrop-filter: blur(20px);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.493), inset 0px 2px 5px rgb(255, 255, 255);
+            border-radius: 20px;
+            transition: opacity .2s;
+        }
+        .glass-icon:hover{
+            box-shadow: inset 0px 2px 10px rgba(0, 0, 0, 0.493), inset 0px 2px 5px rgb(255, 255, 255);
+        }
+
+        .glass-icon:hover img{
+            transform: scale(.9);
+        }
+
+        .btn-next{
+            background: rgb(250, 136, 155);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.288);
+        }
+
+        .btn-next:hover{
+            background: rgb(253, 85, 113);
+        }
+        .btn-next:active{
+            transform: scale(.95);
+        }
+
+        .card-name{
+            box-shadow: inset -2px -4px 10px rgba(0, 0, 0, 0.329), inset 2px 3px 10px rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body style="background-image: url(src/assets/background.jpg);background-repeat: no-repeat; background-size: cover;">
+    <div class="container py-3 px-3">
+        <div class="card px-2 glass-card">
+            <div class="container my-3">
+                    <img src="src/assets/nisa.jpeg" alt="" width="180" class="rounded-bottom-pill rounded-top-circle d-block mx-auto " style="box-shadow: 0px 4px 10px black;">
+                </div>
+                
+                <div class="container  py-2 rounded-3 card-name mt-3" style="background-color: rgb(238, 236, 236); width: 90%;"><p class=" fw-bold" style="color: rgb(253, 109, 133); font-size: 20px;">Khairulnisa Azzahra Christin Fadillah</p>
+                <p class="fw-semibold" style="color: rgb(250, 136, 155);"> 26 Desember 2008</p>
+                <p class="fw-semibold" style="color: rgb(250, 136, 155);">Selamat Ulang Tahun!! wahh ga nyangka sekarang udah 17 tahun, ga kerasa ya waktu secepat itu.</p>
+            </div>
+                
+            
+            <hr>
+            <div class="container mb-3">
+                <a href="./page/index.html" class="btn btn-next d-block fw-bold text-light" >Lanjut ke Halaman lain</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 position-fixed w-100 bottom-0">
+  <div class="container">
+    <small>© 2025 ZallWebdev. All rights reserved.</small>
+  </div>
+</footer>
+
+<script src="src/js/bootstrap.min.js"></script>
+</body>
+</html>

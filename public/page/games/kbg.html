@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kertas Batu Gunting</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffd1dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .container {
+      background-color: #fff0f5;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(255, 192, 203, 0.4);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h3 {
+      color: #d63384;
+      margin-bottom: 1rem;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .choices button {
+      flex: 1;
+      padding: 1rem;
+      font-size: 1.2rem;
+      background-color: #f8bbd0;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+      transition: 0.2s ease;
+      user-select: none;
+    }
+
+    .choices button:hover,
+    .choices button:focus {
+      background-color: #f48fb1;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .result {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      color: #6d214f;
+      min-height: 50px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
+
+    .result.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .score {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      color: #555;
+    }
+
+    @media (max-width: 480px) {
+      .choices {
+        flex-direction: column;
+      }
+      .choices button {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Game Kertas Batu Gunting">
+    <h3>🎀 Kertas Batu Gunting 🎀</h2>
+
+    <div class="choices" role="group" aria-label="Pilih Kertas, Batu, atau Gunting">
+      <button type="button" onclick="play('kertas')" aria-pressed="false">📄 Kertas</button>
+      <button type="button" onclick="play('batu')" aria-pressed="false">🪨 Batu</button>
+      <button type="button" onclick="play('gunting')" aria-pressed="false">✂️ Gunting</button>
+    </div>
+
+    <div class="result" id="result" aria-live="polite" aria-atomic="true">Pilih salah satu untuk mulai!</div>
+    <div class="score" id="score">Skor Kamu: 0 | Bot: 0</div>
+  </div>
+
+  <script>
+    let playerScore = 0;
+    let botScore = 0;
+
+    function play(playerChoice) {
+      const resultDiv = document.getElementById("result");
+      const scoreDiv = document.getElementById("score");
+
+      // Tampilkan loading
+      resultDiv.textContent = "⏳ Bot sedang memilih...";
+      resultDiv.classList.remove("show");
+      scoreDiv.textContent = `Skor Kamu: ${playerScore} | Bot: ${botScore}`;
+
+      // Delay 1 detik sebelum menampilkan hasil
+      setTimeout(() => {
+        const choices = ["kertas", "batu", "gunting"];
+        const botChoice = choices[Math.floor(Math.random() * 3)];
+
+        let resultText = "";
+        if (playerChoice === botChoice) {
+          resultText = `🤝 Seri! Kamu dan Bot memilih ${playerChoice}.`;
+        } else if (
+          (playerChoice === "kertas" && botChoice === "batu") ||
+          (playerChoice === "batu" && botChoice === "gunting") ||
+          (playerChoice === "gunting" && botChoice === "kertas")
+        ) {
+          playerScore++;
+          resultText = `🎉 Menang! ${playerChoice} mengalahkan ${botChoice}.`;
+        } else {
+          botScore++;
+          resultText = `😢 Kalah! ${botChoice} mengalahkan ${playerChoice}.`;
+        }
+
+        resultDiv.textContent = resultText;
+
+        // Trigger animasi muncul
+        resultDiv.classList.remove("show");
+        void resultDiv.offsetWidth; // force reflow
+        resultDiv.classList.add("show");
+
+        scoreDiv.textContent = `Skor Kamu: ${playerScore} | Bot: ${botScore}`;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

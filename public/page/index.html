@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan!!</title>
+    <link rel="stylesheet" href="../src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body{
+            background-image: url(../src/assets/background2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+        }
+
+        .glass-card{
+            background: rgba(252, 131, 212, 0.171);
+            backdrop-filter: blur(20px);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.493), inset 0px 2px 5px rgb(255, 255, 255);
+        }
+
+        .box-animation{
+            animation: shake infinite 2s ease-in-out;
+        }
+        @keyframes shake{
+            0% {transform: rotate(0deg);}
+            25% {transform: rotate(20deg);}
+            75% {transform: rotate(-20deg);}
+            100% {transform: rotate(0deg);}
+        }
+
+        .hide-box{
+            animation: fade-out 2s;
+        }
+        @keyframes fade-out {
+            0% {opacity: 100%;}
+            50%{opacity: 0%;}
+            100%{display: none;}
+        }
+
+        .fade-out {
+        opacity: 0;
+        }
+
+        .open-note{
+            animation: fade-in 2s;
+            display: none;
+        }
+
+        @keyframes fade-in {
+            0% {opacity: 0%;}
+            50%{opacity: 100%;}
+            100%{display: block;}
+        }
+
+        .paper{
+            background: rgb(199, 125, 137);
+            box-shadow: 2px 4px 10px rgb(199, 125, 137);
+        }
+
+        .btn-game{
+            background: rgb(199, 125, 137);
+            box-shadow: 2px 4px 10px rgb(199, 125, 137);
+            transition: .3s ease-in-out;
+        }
+
+        .btn-game:hover{
+            background: rgb(236, 179, 189);
+            box-shadow: 2px 4px 10px rgb(236, 179, 189);
+        }
+
+        .btn-mulai-musik {
+    background-color: #f8bbd0;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 8px rgba(255, 192, 203, 0.3);
+  }
+
+  .btn-mulai-musik:hover {
+    background-color: #f48fb1;
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  .btn-mulai-musik:active {
+    transform: scale(0.97);
+  }
+
+  .music-hidden{
+    display: none;
+  }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-audio" loop>
+  <source src="../src/assets/audio/wwd.mp3juice.blog - HAPPY BIRTHDAY TO YOU PIANO INSTRUMENTAL BEST HAPPY BITHDAY MUSIC 2021 (320 KBps).mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<div class="container" id="music" onclick="hide()">
+    <div class="text-center mt-4">
+  <button class="btn-mulai-musik" onclick="mulaiMusik()">▶️ Mulai Musik</button>
+</div>
+</div>
+
+    <div class="container py-4">
+        <div class="card d-flex justify-content-center align-items-center py-3 px-3 glass-card">
+            <div class="container" id="box" style="cursor: pointer;">
+                <div class="d-flex">
+                    <img src="../src/assets/pngtree-gift-wrapping-image_1178002-removebg-preview.png" alt="" class="box-animation mx-auto">
+                </div>
+            
+            <div class="d-flex">
+                <h1 class="fw-bold text-white mx-auto">
+                Tekan Kado-nya
+            </h1>
+            </div>
+            </div>
+
+            <div class="container open-note" id="note">
+                <div class="container mb-3">
+                    <h1 class=" text-center fw-bold text-white">
+                        Happy Birthday!!
+                    </h1>
+                </div>
+        <div class="card paper py-2 px-2">
+            <p class="text-white fw-bold"><q>Haii Nisaa... apa kabar? semoga baik-baik aja ya, kamu masih ingat aku kann..., anggap aja masih ya, hehe aku cuman mau kasih kamu ucapan spesial buat ulang tahun kamu hari ini, terima kasih ya udah mau baca sampe sini, jadi lanjut aku mau ngomong, Selamat ulang tahun ya Nisaa atau kadang aku suka nyebut kamu Christin semoga panjang umur yaa, bisa banggain orang tua, rezekinya lancar, semangat belajarnya, rajin bantu orang tua, semangat buat jalani hari hari berikutnya, jangan lupa ibadahnya, oh ya beberapa hari lagi udah berganti tahun aku juga sekalian mau ucapin Selamat tahun baru semoga apa yang kamu harapin di tahun kemarin belum kesampaian semoga cepet kesampaianditahun ini, hehe maaf ya aku panjang banget teksnya, aku cuman ngeluarin isi hatiku aja, makasih ya udah mau bacain teks aku yang panjang, buat refreshing, aku punya minigame buat kamu, ini juga sekalian hasil aku belajar pemrograman juga, tekan aja minigame apa yang kamu mau, ENJOYY!!!</q></p>
+        </div>
+
+        <div class="container my-3">
+            <div class="d-flex w-100 text-white">
+            <h1 class="fw-bold">Opsi game : </h1>
+            </div>
+
+            <div class="row">
+                <div class="col-sm btn-game rounded-3 py-3 mb-3" onclick="tebak()">
+                    <p class="uppercase fw-bold text-white text-center h2" >Tebak Angka</p>
+                </div>
+                <div class="col-sm btn-game rounded-3 py-3 mb-3" onclick="kertasbatu()">
+                    <p class="uppercase fw-bold text-white text-center h2">🪨✂️📄</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="container bg-white rounded-3 py-3">
+                <form id="waForm">
+                    <div class="container mb-3">
+                        <h1>mau kirim pesan?</h1>
+                    </div>
+                    <div class="container mb-2">
+                    <label for="pesan" class="form-label fw-semibold">Pesan : </label>
+                    <input type="text" class="form-control border-2" name="pesan" id="input-pesan" placeholder="Masukkan Pesan">
+                    </div>
+                    <div class="container mb-2">
+                        <button type="submit" class="btn btn-success shadow ">SUBMIT</button>
+                    </div>
+                    <div class="container">
+                        <p class="text-black-50">*link akan mengarah ke whatsapp</p>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 position-sticky w-100 bottom-0">
+  <div class="container">
+    <small>© 2025 ZallWebdev. All rights reserved.</small>
+  </div>
+</footer>
+
+
+
+    <script src="../src/js/bootstrap.min.js"></script>
+    <script>
+        const clickBox = document.querySelector('#box')
+        const Note = document.querySelector('#note')
+
+        clickBox.onclick = function(){
+            clickBox.classList.add('hide-box')
+            Note.classList.add('open-note')
+
+            setTimeout(() => {
+            clickBox.style.display = 'none';
+            Note.style.display = 'block';
+  }, 1000);
+        }
+    </script>
+
+    <script>
+
+        function tebak(){
+        window.location.href = "games/tebakangka.html";
+        }
+        function kertasbatu(){
+        window.location.href = "games/kbg.html";
+        }
+    </script>
+
+    <script>
+    document.getElementById('waForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // mencegah reload halaman
+
+      const isiPesan = document.getElementById('input-pesan').value;
+      const nomorWA = '6282324020862'; // Ganti dengan nomor tujuan tanpa +
+      
+      // Encode pesan agar aman di URL
+      const pesanEncoded = encodeURIComponent(isiPesan);
+
+      // Buat link WhatsApp
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesanEncoded}`;
+
+      // Arahkan ke link WhatsApp
+      window.open(linkWA, '_blank');
+    });
+  </script>
+
+  <script>
+    function mulaiMusik() {
+    const audio = document.getElementById("bg-audio");
+    audio.volume = 0.3;
+    audio.play().then(() => {
+      console.log("Musik diputar.");
+    }).catch((err) => {
+      alert("Browser memblokir autoplay. Coba interaksi ulang.");
+      console.error(err);
+    });
+  }
+
+  const hideMusic = document.querySelector('#music')
+  function hide(){
+    hideMusic.classList.add('music-hidden')
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tebak Angka</title>
+  <link href="/public/src/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+
+  <div class="card p-4 shadow" style="width: 100%; max-width: 400px;">
+    <h4 class="text-center mb-3">🎯 Tebak Angka 1 - 10</h4>
+
+    <div class="mb-3">
+      <input type="number" id="inputAngka" class="form-control" placeholder="Tebakanmu (1 - 10)" min="1" max="10">
+    </div>
+
+    <div class="d-grid">
+      <button class="btn btn-primary" onclick="cekTebakan()" id="btnCek">Cek Jawaban</button>
+    </div>
+
+    <div id="hasil" class="mt-3 text-center fw-bold"></div>
+    <div id="kesempatan" class="text-center text-muted mt-1"></div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-outline-secondary btn-sm" onclick="resetGame()">Main Lagi</button>
+    </div>
+  </div>
+
+  <script>
+    let angkaBenar;
+    let kesempatan;
+
+    function mulaiGame() {
+      angkaBenar = Math.floor(Math.random() * 10) + 1;
+      kesempatan = 3;
+      document.getElementById('hasil').textContent = '';
+      document.getElementById('kesempatan').textContent = `Kesempatan: ${kesempatan}`;
+      document.getElementById('inputAngka').value = '';
+      document.getElementById('inputAngka').disabled = false;
+      document.getElementById('btnCek').disabled = false;
+    }
+
+    function cekTebakan() {
+      const input = document.getElementById('inputAngka');
+      const hasil = document.getElementById('hasil');
+      const infoKesempatan = document.getElementById('kesempatan');
+
+      const tebakan = parseInt(input.value);
+
+      if (isNaN(tebakan) || tebakan < 1 || tebakan > 10) {
+        hasil.textContent = "⚠️ Masukkan angka 1 - 10!";
+        hasil.className = "text-danger mt-3 fw-bold";
+        return;
+      }
+
+      if (tebakan === angkaBenar) {
+        hasil.textContent = `🎉 Benar! Angkanya adalah ${angkaBenar}. Hebatt bisa nebak angka semudah itu, good job girl!!`;
+        hasil.className = "text-success mt-3 fw-bold";
+        input.disabled = true;
+        document.getElementById('btnCek').disabled = true;
+        infoKesempatan.textContent = "";
+      } else {
+        kesempatan--;
+        let petunjuk = tebakan > angkaBenar ? "Terlalu besar!" : "Terlalu kecil!";
+        
+        if (kesempatan > 0) {
+          hasil.textContent = `❌ Salah! ${petunjuk}`;
+          hasil.className = "text-danger mt-3 fw-bold";
+          infoKesempatan.textContent = `Kesempatan tersisa: ${kesempatan}`;
+        } else {
+          hasil.textContent = `😢 Kamu kalah! Angka yang benar adalah ${angkaBenar}. gapapa kok kamu kalah disini tapi kamu selalu menang dihati aku`;
+          hasil.className = "text-danger mt-3 fw-bold";
+          input.disabled = true;
+          document.getElementById('btnCek').disabled = true;
+          infoKesempatan.textContent = "Kesempatan habis.";
+        }
+      }
+
+      input.value = '';
+    }
+
+    function resetGame() {
+      mulaiGame();
+    }
+
+    mulaiGame();
+  </script>
+
+</body>
+</html>
